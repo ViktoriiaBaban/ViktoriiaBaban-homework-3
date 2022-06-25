@@ -30,6 +30,7 @@ std::vector<RestorePoint> BackupJob::getRestorePoints() {
 RestorePoint BackupJob::runBackupJob() {
     int backup_number = restore_points.size() + 1;
     RestorePoint restorePoint(backup_number);
+    restorePoint.addJobObjects(job_objects);
     for(auto job_object : job_objects) {
         Storage storage(job_object, backup_number);
         restorePoint.addStorage(storage);

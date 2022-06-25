@@ -23,9 +23,10 @@ TEST(CreateBackups, TwoRestorePointsAndThreeStoragesCreated) {
     auto storages1 = rp_1.getStorages(), storages2 = rp_2.getStorages();
     auto points = backupJob.getRestorePoints();
 
+    ASSERT_EQ(points.size(), 2);
     ASSERT_EQ(jobs1.size() + jobs2.size(), 3);
     ASSERT_EQ(storages1.size() + storages2.size(), 3);
-    ASSERT_EQ(points.size(), 2);
+
 }
 
 
