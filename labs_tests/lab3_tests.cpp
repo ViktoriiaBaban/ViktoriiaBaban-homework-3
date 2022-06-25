@@ -8,7 +8,7 @@
 
 TEST(CreateBackups, TwoRestorePointsAndThreeStoragesCreated) {
     std::string path = std::filesystem::current_path().string()+"/";
-    BackupJob backupJob(path, "single");
+    BackupJob backupJob(path, "split");
 
     JobObject FileA("FILE_A"), FileB("FILE_B");
     backupJob.addOneJobObject(FileA);
