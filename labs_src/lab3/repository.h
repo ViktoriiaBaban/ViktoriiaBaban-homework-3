@@ -9,25 +9,14 @@
 #include "../libzippp-master/src/libzippp.h"
 using namespace libzippp;
 
-struct Repository {
+class Repository {
 public:
-    virtual void set_path(const std::string& backup_path);
-    virtual void save(RestorePoint& restorePoint, const std::string& arch_name) = 0;
-    virtual std::string getPath();
-protected:
+    void set_path(const std::string& backup_path);
+    std::string getPath();
+
+    void save_split(RestorePoint& restorePoint, const std::string& arch_name);
+    void save_single(RestorePoint& restorePoint, const std::string& arch_name);
+
+private:
     std::string path;
-};
-
-class RepositoryForSplitStorages : public Repository {
-public:
-    RepositoryForSplitStorages() = default;
-    RepositoryForSplitStorages(std::string path);
-    void save(RestorePoint& restorePoint, const std::string& rep_name) override;
-};
-
-class RepositoryForSingleStorages : public Repository {
-public:
-    RepositoryForSingleStorages() = default;
-    RepositoryForSingleStorages(std::string path);
-    void save(RestorePoint& restorePoint, const std::string& rep_name) override;
 };

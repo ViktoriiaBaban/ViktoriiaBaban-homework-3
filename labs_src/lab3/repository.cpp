@@ -12,7 +12,7 @@ std::string Repository::getPath() {
     return this->path;
 }
 
-void RepositoryForSingleStorages::save(RestorePoint& restorePoint, const std::string& rep_name) {
+void Repository::save_single(RestorePoint& restorePoint, const std::string& rep_name) {
 
     if (!std::filesystem::exists(path)) {
         std::filesystem::create_directory(path);
@@ -29,7 +29,7 @@ void RepositoryForSingleStorages::save(RestorePoint& restorePoint, const std::st
     zip_file.close();
 }
 
-void RepositoryForSplitStorages::save(RestorePoint& restorePoint, const std::string& rep_name) {
+void Repository::save_split(RestorePoint& restorePoint, const std::string& rep_name) {
 
     if (!std::filesystem::exists(path)) {
         std::filesystem::create_directory(path);
@@ -44,10 +44,3 @@ void RepositoryForSplitStorages::save(RestorePoint& restorePoint, const std::str
     }
 }
 
-RepositoryForSplitStorages::RepositoryForSplitStorages(std::string path) {
-this->path = path;
-}
-
-RepositoryForSingleStorages::RepositoryForSingleStorages(std::string path) {
-    this->path = path;
-}

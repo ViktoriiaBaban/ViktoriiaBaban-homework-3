@@ -1,13 +1,10 @@
 #include "backup_job.h"
 
 BackupJob::BackupJob(const std::string& backup_path, const std::string& type_storage) {
-    if (type_storage == "split"){
-        rep_split->set_path(backup_path);
+    if (type_storage == "split" or type_storage == "single"){
+        rep.set_path(backup_path);
         storage_type = type_storage;
-    } else if (type_storage == "single") {
-        rep_single->set_path(backup_path);
-        storage_type = type_storage;
-    }else{
+    } else{
         throw std::runtime_error("Incorrect type.");
     }
 }
@@ -40,9 +37,9 @@ RestorePoint BackupJob::runBackupJob() {
     restore_points.push_back(restorePoint);
 
     if (storage_type == "split"){
-        rep_split->save(restorePoint, "backup_" + std::to_string(backup_number) + "_" + storage_type);
+        rep.save_split(restorePoint, "backup_" + std::to_string(backup_number) + "_" + storage_type);
     } else {
-        rep_single->save(restorePoint, "backup_" + std::to_string(backup_number) + "_" + storage_type);
+        rep.save_single(restorePoint, "backup_" + std::to_string(backup_number) + "_" + storage_type);
     }
     return restorePoint;
 }
