@@ -1,27 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <string>
+#include <fstream>
+#include <ctime>
+#include <sstream>
 
 #include "storage.h"
-#include "repository.h"
 #include "job_object.h"
-/*
-class RestorePoint {
-private:
-    std::vector<JobObject> jobObjects;
-    std::vector<Storage> storages;
-    std::time_t time_create;
-    std::string name;
-public:
-    void setTimeCreate();
-    ~RestorePoint();
-
-};
-*/
 
 class RestorePoint {
 public:
-
     RestorePoint(const int &num);
 
     void addJobObjects(std::vector<JobObject> new_job_objects);

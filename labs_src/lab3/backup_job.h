@@ -21,6 +21,5 @@ private:
     std::string storage_type;
     std::vector<JobObject> job_objects;
     std::vector<RestorePoint> restore_points;
-    RepositoryForSplitStorages *rep_split;
-    RepositoryForSingleStorages *rep_single;
+    Repository *rep;
 };

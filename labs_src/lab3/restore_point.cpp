@@ -1,5 +1,6 @@
 #include "restore_point.h"
 
+
 RestorePoint::RestorePoint(const int& num) {
     this->number = num;
     this->time_create = time(nullptr);
@@ -30,8 +31,8 @@ std::time_t RestorePoint::getTime() const {
 }
 std::string RestorePoint::getTimeAsString() const {
     auto time = this->getTime();
-    std::stringstream strstream;
-    strstream << mktime(&*std::localtime(&time));
-    return strstream.str();
+    std::stringstream s;
+    s<< mktime(&*std::localtime(&time));
+    return s.str();
 }
 
