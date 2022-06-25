@@ -20,12 +20,14 @@ protected:
 
 class RepositoryForSplitStorages : public Repository {
 public:
+    RepositoryForSplitStorages() = default;
     RepositoryForSplitStorages(std::string path);
     void save(RestorePoint& restorePoint, const std::string& rep_name) override;
 };
 
 class RepositoryForSingleStorages : public Repository {
 public:
+    RepositoryForSingleStorages() = default;
     RepositoryForSingleStorages(std::string path);
     void save(RestorePoint& restorePoint, const std::string& rep_name) override;
 };
