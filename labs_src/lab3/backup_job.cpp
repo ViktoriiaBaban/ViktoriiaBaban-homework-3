@@ -3,11 +3,11 @@
 BackupJob::BackupJob(const std::string& backup_path, const std::string& type_storage) {
     if (type_storage == "split"){
         RepositoryForSplitStorages rep_split = RepositoryForSplitStorages(backup_path);
-        *rep = rep_split;
+        rep = &rep_split;
         storage_type = type_storage;
     } else if (type_storage == "single") {
         RepositoryForSingleStorages rep_single = RepositoryForSingleStorages(backup_path);
-        *rep = rep_single;
+        rep = &rep_single;
         storage_type = type_storage;
     }else{
         throw std::runtime_error("Incorrect type.");
